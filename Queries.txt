@@ -1,0 +1,27 @@
+CREATE TABLE Employee (
+Id int IDENTITY NOT NULL PRIMARY KEY,
+FirstName varchar(max)NOT NULL,
+LastName varchar(max)NOT NULL,
+Age int NULL,
+Salary int NOT NULL,
+JobPositionID int NOT NULL
+)
+
+CREATE TABLE JobPosition (
+Id int IDENTITY NOT NULL PRIMARY KEY,
+JobPosition varchar(max)NOT NULL
+)
+
+CREATE TABLE PensionFundTable (
+Id int IDENTITY NOT NULL PRIMARY KEY,
+EmployeeID int NOT NULL,
+Contribution int NULL,
+PensionProviderID int NOT NULL
+)
+
+CREATE TABLE PensionProvider (
+Id int IDENTITY NOT NULL PRIMARY KEY,
+ProviderName int NOT NULL,
+DefaultProvider varchar(max)NOT NULL
+)
+
