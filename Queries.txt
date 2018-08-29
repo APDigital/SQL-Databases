@@ -25,3 +25,34 @@ ProviderName int NOT NULL,
 DefaultProvider varchar(max)NOT NULL
 )
 
+
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Fred', 'Williams', 28, 25000,1)
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Bob', 'Joseph', 32, 16000,2)
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Frank', 'Cole', 45, 40000,3)
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Peter', 'Brock', 21, 16000,2)
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Aisling', 'Parthe', 48, 21000,2)
+
+
+INSERT INTO JobPosition(JobPosition) VALUES ('Sales Coordinator')
+INSERT INTO JobPosition(JobPosition) VALUES ('Sales Assistant')
+INSERT INTO JobPosition(JobPosition) VALUES ('Store Manager')
+
+
+INSERT INTO PensionFundTable(EmployeeID, Contribution, PensionProviderID) VALUES (1,2500,1)
+INSERT INTO PensionFundTable(EmployeeID, Contribution, PensionProviderID) VALUES (2,3300,1)
+INSERT INTO PensionFundTable(EmployeeID, Contribution, PensionProviderID) VALUES (3,11000,2)
+INSERT INTO PensionFundTable(EmployeeID, Contribution, PensionProviderID) VALUES (3,28000,3)
+INSERT INTO PensionFundTable(EmployeeID, Contribution, PensionProviderID) VALUES (4,15000,2)
+INSERT INTO PensionFundTable(EmployeeID, Contribution, PensionProviderID) VALUES (5,10000,2)
+
+
+INSERT INTO PensionProvider(DefaultProvider, ProviderName) VALUES ('True', 'Pension Plus')
+INSERT INTO PensionProvider(DefaultProvider, ProviderName) VALUES ('False', 'Retirement Planning Co.')
+INSERT INTO PensionProvider(DefaultProvider, ProviderName) VALUES ('False', 'VIP Pension Provider')
+
+
+SELECT FirstName + ' ' + LastName  FROM Employee WHERE	Age > 35
+
+UPDATE PensionFundTable 
+SET Contribution = Contribution * 1.05
+WHERE Id IN(1,2,3,4,5)
