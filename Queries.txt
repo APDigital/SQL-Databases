@@ -1,3 +1,5 @@
+Tables and Relationships
+
 CREATE TABLE Employee (
 Id int IDENTITY NOT NULL PRIMARY KEY,
 FirstName varchar(max)NOT NULL,
@@ -28,6 +30,9 @@ ProviderName varchar(max) NOT NULL,
 DefaultProvider varchar(max)NOT NULL
 )
 
+-----------------------------------------------------------------------------------------------------------------------
+
+Reading and Writing Data
 
 INSERT INTO JobPosition(JobPosition) VALUES ('Sales Coordinator')
 INSERT INTO JobPosition(JobPosition) VALUES ('Sales Assistant')
@@ -53,15 +58,27 @@ INSERT INTO PensionFundTable(EmployeeID, Contribution, PensionProviderID) VALUES
 INSERT INTO PensionFundTable(EmployeeID, Contribution, PensionProviderID) VALUES (5,10000,2)
 
 
+Select First and last name of employees under the age of 35 :
+
 SELECT FirstName + ' ' + LastName  FROM Employee WHERE	Age > 35
+
+update pension contribution by 5% :
 
 UPDATE PensionFundTable 
 SET Contribution = Contribution * 1.05
 
+-----------------------------------------------------------------------------------------------------------------------
+Aggregates Joins and Subqueries
+
+Find the average salary for each job position :
+
 SELECT AVG(Salary) AS AverageSalary, JobPositionID FROM Employee GROUP BY JobPositionID
+
+Work out how many people have their funds with each pension provider:
 
 SELECT COUNT(EmployeeID) AS NumberOfEmployees, PensionProviderID FROM PensionFundTable GROUP BY PensionProviderID
 
+Find all employees without pension funds :
 
 INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Ben', 'Davis', 38, 26000,1)
 INSERT INTO PensionProvider(DefaultProvider, ProviderName) VALUES ('False', 'No Provider')
@@ -81,6 +98,7 @@ WHERE DefaultProvider = 'True'
 )
 WHERE PensionProviderID = 4;
 
+-----------------------------------------------------------------------------------------------------------------------
 
 
 
