@@ -1,0 +1,29 @@
+Aggregates Joins and Subqueries
+
+Find the average salary for each job position :
+
+SELECT AVG(Salary) AS AverageSalary, JobPositionID FROM Employee GROUP BY JobPositionID
+
+Work out how many people have their funds with each pension provider:
+
+SELECT COUNT(EmployeeID) AS NumberOfEmployees, PensionProviderID FROM PensionFundTable GROUP BY PensionProviderID
+
+Find all employees without pension funds :
+
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Ben', 'Davis', 38, 26000,1)
+INSERT INTO PensionProvider(DefaultProvider, ProviderName) VALUES ('False', 'No Provider')
+INSERT INTO PensionFundTable(EmployeeID, Contribution, PensionProviderID) VALUES (6,0,4)
+
+SELECT Employee.FirstName + ' ' + Employee.LastName AS EmployeeName, PensionFundTable.PensionProviderID
+FROM Employee
+JOIN PensionFundTable
+On PensionFundTable.EmployeeID = Employee.Id
+WHERE PensionProviderID = 4
+
+UPDATE PensionFundTable
+Set PensionProviderID =  (
+SELECT PensionProvider.Id 
+FROM PensionProvider
+WHERE DefaultProvider = 'True'
+)
+WHERE PensionProviderID = 4;
