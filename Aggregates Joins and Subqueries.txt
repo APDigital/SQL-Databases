@@ -2,11 +2,19 @@ Aggregates Joins and Subqueries
 
 Find the average salary for each job position :
 
-SELECT AVG(Salary) AS AverageSalary, JobPositionID FROM Employee GROUP BY JobPositionID
+SELECT AVG(Salary) AS AverageSalary, JobPosition 
+FROM Employee
+JOIN JobPosition
+ON JobPositionID = JobPosition.Id
+GROUP BY JobPosition.JobPosition
 
 Work out how many people have their funds with each pension provider:
 
-SELECT COUNT(EmployeeID) AS NumberOfEmployees, PensionProviderID FROM PensionFundTable GROUP BY PensionProviderID
+SELECT COUNT(EmployeeID) AS NumberOfEmployees, ProviderName 
+FROM PensionFundTable
+JOIN PensionProvider
+ON PensionProviderID = PensionProvider.Id
+GROUP BY PensionProvider.ProviderName
 
 Find all employees without pension funds :
 
