@@ -1,2 +1,30 @@
 Data Types and Nulls
 
+Write a "partial text" query - that is, I can find the details of all people whose first name begins with a substring (e.g. "Da" will return Daniel and David)
+
+SELECT * FROM Employee
+WHERE FirstName LIKE 'A%'
+
+Add a "last contribution date" column to the pension fund table. Modify your existing query that adds 5% of everyone's salary to their pension fund, to update the last contribution date as well
+
+ALTER TABLE PensionFundTable
+ADD LastContributionDate varchar NULL
+ALTER TABLE PensionFundTable
+ALTER COLUMN LastContributionDate DATETIME NULL
+
+UPDATE PensionFundTable
+SET Contribution = Contribution + (Employee.Salary * 0.05), LastContributionDate = GETDATE()
+FROM PensionFundTable
+JOIN Employee
+ON Employee.Id = PensionFundTable.EmployeeID
+
+You've already got a query that finds all the employees without pension funds. How many different approaches can you find to solving this particular problem?
+
+ALTER TABLE PensionFundTable
+ALTER Column PensionProviderID INT NULL
+
+SELECT Employee.FirstName + ' ' + Employee.LastName AS EmployeeName, PensionFundTable.PensionProviderID
+FROM Employee
+JOIN PensionFundTable
+On PensionFundTable.EmployeeID = Employee.Id
+WHERE PensionProviderID IS NULL OR PensionProviderID = 4

@@ -38,11 +38,11 @@ INSERT INTO JobPosition(JobPosition) VALUES ('Sales Coordinator')
 INSERT INTO JobPosition(JobPosition) VALUES ('Sales Assistant')
 INSERT INTO JobPosition(JobPosition) VALUES ('Store Manager')
 
-INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Fred', 'Williams', 28, 25000,1)
-INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Bob', 'Joseph', 32, 16000,2)
-INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Frank', 'Cole', 45, 40000,3)
-INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Peter', 'Brock', 21, 16000,2)
-INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Aisling', 'Parthe', 48, 21000,2)
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Fred', 'Williams', 28, 25000, 1)
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Bob', 'Joseph', 32, 16000, 2)
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Frank', 'Cole', 45, 40000, 3)
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Peter', 'Brock', 21, 16000, 2)
+INSERT INTO Employee(FirstName, LastName, Age, Salary, JobPositionID) VALUES ('Aisling', 'Parthe', 48, 21000, 2)
 
 
 INSERT INTO PensionProvider(DefaultProvider, ProviderName) VALUES ('True', 'Pension Plus')
