@@ -1,0 +1,10 @@
+Views and Stored Procedures 
+
+CREATE VIEW EmployeePensionView AS
+SELECT Employee.Id, Employee.FirstName + ' ' + Employee.LastName AS EmployeeName, Employee.Salary, PensionFundTable.Contribution AS PensionFundSize, PensionProvider.ProviderName as PensionProviderName
+FROM Employee
+JOIN PensionFundTable
+ON Employee.Id = PensionFundTable.EmployeeID
+JOIN PensionProvider
+ON PensionFundTable.PensionProviderID  = PensionProvider.Id
+
