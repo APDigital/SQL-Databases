@@ -27,4 +27,4 @@ SELECT Employee.FirstName + ' ' + Employee.LastName AS EmployeeName, PensionFund
 FROM Employee
 JOIN PensionFundTable
 On PensionFundTable.EmployeeID = Employee.Id
-WHERE PensionProviderID IS NULL OR PensionProviderID = 4
+WHERE PensionProviderID IS NULL

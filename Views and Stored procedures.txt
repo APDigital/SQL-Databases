@@ -8,3 +8,13 @@ ON Employee.Id = PensionFundTable.EmployeeID
 JOIN PensionProvider
 ON PensionFundTable.PensionProviderID  = PensionProvider.Id
 
+
+
+CREATE PROCEDURE MonthlyPensionContribution
+AS
+UPDATE PensionFundTable
+SET Contribution = Contribution + (Employee.Salary * 0.05), LastContributionDate = GETDATE()
+FROM PensionFundTable
+JOIN Employee
+ON Employee.Id = PensionFundTable.EmployeeID
+
