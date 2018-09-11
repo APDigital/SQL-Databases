@@ -28,3 +28,6 @@ FROM Employee
 JOIN PensionFundTable
 On PensionFundTable.EmployeeID = Employee.Id
 WHERE PensionProviderID IS NULL
+
+DELETE FROM PensionProvider 
+WHERE Id = 4
