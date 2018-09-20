@@ -18,3 +18,20 @@ FROM PensionFundTable
 JOIN Employee
 ON Employee.Id = PensionFundTable.EmployeeID
 
+ALTER PROCEDURE MonthlyPensionContribution
+@percentageIncrease int
+AS
+UPDATE PensionFundTable
+SET Contribution = Contribution + (Employee.Salary * CAST(@percentageIncrease as float)/100), LastContributionDate = GETDATE()
+FROM PensionFundTable
+JOIN Employee
+ON Employee.Id = PensionFundTable.EmployeeID
+
+GO
+
+EXEC MonthlyPensionContribution @percentageIncrease = 5
+
+SELECT * FROM PensionFundTable
+
+
+
