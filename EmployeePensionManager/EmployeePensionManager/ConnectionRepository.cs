@@ -34,8 +34,8 @@ namespace EmployeePensionManager
             using (IDbConnection connection = Connection)
             {
                 connection.Open();
-                string query = "select * from PensionFundTable pft join Employee e on e.Id = pft.EmployeeID Order by pft.EmployeeID";
-                return connection.Query<PensionFundTable, Employee, PensionFundTable>(query, (pensionFundTable, employee) => { pensionFundTable.Employee = employee; return pensionFundTable; });
+                string query = "select * from PensionFundTable pft join Employee e on e.Id = pft.EmployeeID join JobPosition j on j.Id = e.JobPositionID Order by pft.EmployeeID";
+                return connection.Query<PensionFundTable, Employee, JobPositions, PensionFundTable>(query, (pensionFundTable, employee, jobpositions) => { pensionFundTable.Employee = employee; employee.JobPosition = jobpositions; return pensionFundTable; });
             }
         }
 
