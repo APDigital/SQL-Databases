@@ -48,5 +48,17 @@ namespace EmployeePensionManager
                 return connection.Query<PensionProvider>(query);
             }
         }
+        public IEnumerable<PensionFundTable> UpdatePensionContribution(int percentageToIncreaseBy)
+        {
+            using (IDbConnection connection = Connection)
+            {
+                connection.Open();
+                connection.Query<PensionFundTable>("MonthlyPensionContribution", new { percentageIncrease = percentageToIncreaseBy },
+                    commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return ListAllPensionFund();
+                
+            }
+        }
+
     }
 }

@@ -21,9 +21,25 @@ namespace EmployeePensionManager
 
             foreach (var pensionFund in pensionFundList)
             {
-                string printEmployee = string.Format("Employee Name: {0} {1}, Job Position: {2}, Pension Fund Contribution: {3}", pensionFund.Employee.FirstName, pensionFund.Employee.LastName, pensionFund.Employee.JobPosition.JobPosition, pensionFund.Contribution);
+                string printEmployee = string.Format("Employee Name: {0} {1}, Job Position: {2}, Pension Fund Contribution: {3}", 
+                    pensionFund.Employee.FirstName, pensionFund.Employee.LastName, pensionFund.Employee.JobPosition.JobPosition, pensionFund.Contribution);
                 Console.WriteLine(printEmployee);
+                
             }
+            Console.WriteLine(" ");
+            Console.WriteLine(" ");
+            Console.WriteLine("Updated Table by Running MonthlyPensionContribution Stored Procedure");
+            Console.WriteLine(" ");
+            Console.WriteLine(" ");
+            IEnumerable<PensionFundTable> updatedTable = connection.UpdatePensionContribution(5);
+            foreach (var pensionFund in updatedTable)
+            {
+                string printEmployee = string.Format("Employee Name: {0} {1}, Job Position: {2}, Pension Fund Contribution: {3}",
+                   pensionFund.Employee.FirstName, pensionFund.Employee.LastName, pensionFund.Employee.JobPosition.JobPosition, pensionFund.Contribution);
+                Console.WriteLine(printEmployee);
+
+            }
+
 
             Console.ReadLine();
         }
