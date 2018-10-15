@@ -1,0 +1,21 @@
+ALTER TABLE PensionFundTable
+DROP CONSTRAINT FK__PensionFu__Emplo__0425A276
+
+ALTER TABLE Employee
+DROP CONSTRAINT PK__Employee__7E6CC920
+
+
+CREATE CLUSTERED INDEX IXEmployeeJobPositionId ON Employee(JobPositionID)
+
+Select * FROM Employee WHERE JobPositionId = 2
+
+
+SELECT Employee.FirstName + Employee.LastName AS EmployeeName, JobPosition.JobPosition 
+FROM Employee
+JOIN JobPosition
+ON JobPosition.Id = Employee.JobPositionID
+
+SELECT * FROM PensionFundTable
+WITH(INDEX(IX_EmployeeID_PensionProviderID))
+
+CREATE NONCLUSTERED INDEX IX_EmployeeID_PensionProviderID ON PensionFundTable (EmployeeID, PensionProviderID)
